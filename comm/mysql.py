@@ -7,7 +7,7 @@ class OperateDataBase ():
         pass
 
     def conDB(self):
-        id123 = 0
+        id = 0
         name = "test_user"
         password = "123456"
         # 连接database
