@@ -1,8 +1,12 @@
+# -*- coding: utf-8 -*-
 import tornado.web
+import comm.mysql
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render('../index.html',)
+        self.render('../source/html/index.html',)
+        conn = comm.mysql.OperateDataBase()
+        conn.conDB()
 
     def post(self):
         import time
