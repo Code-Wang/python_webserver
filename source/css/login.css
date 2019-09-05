@@ -1,0 +1,386 @@
+html{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+    height: 100%;
+    word-wrap: break-word;
+    font: 16px/1.5 Helvetica, Arial;
+    /*//这里是设置字体，Helvetica字体在移动端各系统都支持（都不支持微软雅黑）*/
+    color: #333;
+    -webkit-text-size-adjust: none;
+    /*//设置文本不会放大，普通网页在移动端打开文本是会跟随网页结构缩放的*/
+}
+body *{
+    -webkit-tap-highlight-color: transparent;
+    /*//在一些手机上，如iphone，点击按钮等元素会出现点击态的背景色，设置为透明就看不出来了*/
+    /*-webkit-user-select:none;*/
+    /*//设置元素内的文字及其子元素将不会被选中*/
+}
+*:not(input) {
+  -webkit-user-select: none;
+}
+
+input, button, select, textarea {
+	-webkit-user-select:text;
+	outline: none;
+	border-radius: 0;
+}
+@media screen and (max-width:359px) and (min-width:320px) {
+    html,body{
+        font-size: 50px !important;
+    }
+}
+@media screen and (max-width:374px) and (min-width:360px) {
+    html,body{
+        font-size: 56.25px !important;
+    }
+}
+@media screen and (max-width:413px) and (min-width:375px) {
+   html,body{
+        font-size: 58.5px !important;
+    }
+}
+@media screen and (max-width:639px)  and (min-width:414px){
+   html,body{
+        font-size: 64.6px !important;
+    }
+}
+@media screen and (min-width:640px) {
+    html,body{
+        font-size: 64.6px !important;
+        background-color: #FFFFFF !important;
+        display: flex;
+    	align-items: center;
+    }
+    .login-page{
+    	width: 100% !important;
+	    height: 100% !important;
+	    background-color: #32a5e7 !important;
+	    margin: auto !important;
+        /*background-image: url("../img/login_backgroud.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;*/
+    }
+    .normalInput{
+	    margin-bottom: 0.1rem !important;
+    }
+    .error{
+	    margin-top: -0.02rem !important;
+    }
+    .reme-div{
+    	margin-bottom: -0.02rem !important;
+    	margin-top: -0.03rem !important;
+    }
+}
+
+.login-page{
+	width: 100%;
+	height: 100%;
+    background-color: #31aa54;
+}
+.logo-img{
+    width: 100%;
+    height: auto;
+    display:flex;
+  	justify-content:center;
+    position: relative;
+    top: 1.2rem;
+}
+.logo-desc{
+	width: 100%;
+    height: auto;
+    display:flex;
+  	justify-content:center;
+  	font-size:0.35rem;
+	color:#ffffff;
+    margin-top: 1.5rem;
+}
+.login-form{
+    width: 5rem;
+    margin: 0 auto;
+    font-size: 0.24rem;
+}
+.form-div{
+    margin: 0 auto;
+    text-align: center;
+    width: 300px;
+    height:44px;
+}
+.input-error{
+    margin-left: 0px;
+    margin-bottom: 20px;
+    color: red;
+    float: left;
+}
+.form-input{
+	background:#ffffff;
+	border-radius:4px;
+	width:100%;
+	height: 100%;
+}
+/*mainForm1*/
+
+.mainForm {
+	margin-top: 1rem;
+	width: 5.33rem;
+    margin: 0.4rem auto 0;
+	overflow: hidden;
+}
+.mainForm i{
+    color: #b1b5bb;
+    display: block !important;
+    font-size: 0.36rem;
+    height: 0.36rem;
+    margin: 0.231rem 0.18rem;
+    position: absolute !important;
+    text-align: center;
+}
+.btn{
+	display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 0.23rem;
+    width: 100%;
+    height: 0.78rem;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+.btn-login{
+    color: #31aa54;
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+}
+
+
+.number {
+	font-size: 17px;
+	margin-left: 0px;
+	margin-bottom: 30px;
+	width: 303px;
+	text-align: center;
+}
+
+.number a {
+	color: #515151;
+}
+
+.normalInput {
+	float: left;
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	height: 0.78rem;
+	line-height: 0.78rem;
+	font-size: 0.23rem;
+	margin-top: 0.3rem;
+	outline: none;
+	color: #474747;
+	overflow: visible;
+}
+
+.a_btn{
+	display: inline-block;
+    height: 30px;
+    width: 100px;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    outline: none;
+    cursor: pointer;
+    background-color: #32a5e7;
+    color: #fff;
+    margin-top: 20px;
+}
+
+.a_cancel{
+	background-color: #a2a2a2;
+}
+
+.error {
+	display: none;
+	margin-left: 0px;
+    margin-top: 0.13rem;
+	font-size: 0.23rem;
+	color: red;
+	float: left;
+}
+
+/*#mainForm1 .normalInput input,#mainForm2 .normalInput input{line-height: 22px;padding: 14px 0;height: 22px;}*/
+
+.normalInput_input {
+	padding-left: 0.62rem;
+	width: 100%;
+	height: 100%;
+    outline: none;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.formLine {
+	color: #d9d9d9;
+    height: 0.7rem;
+    display: inline-block;
+    border-left: 1px solid #dadada;
+    position: absolute;
+    right: 1.78rem;
+    top: 0.07rem;
+}
+
+.getKey {
+	text-align: center;
+    width: 100px;
+    outline: none;
+    height: 100%;
+    line-height: 100%;
+    font-size: 14px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+}
+
+.normalInput .password {
+	float: left;
+	width: 200px;
+}
+
+.normalInput .password1 {
+	float: left;
+	width: 200px;
+	/*display: none;*/
+}
+
+.normalInput .passwordN {
+	float: left;
+	width: 200px;
+	display: block;
+}
+
+.normalInput .password1N {
+	float: left;
+	width: 200px;
+	/*display: none;*/
+}
+
+.pwdBtnShow {
+	outline: none;
+	position: relative;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	overflow: hidden;
+	float: right;
+	margin-right: 5px;
+}
+
+#pwdBtn {
+	margin-top: 13px;
+	margin-bottom: 10px;
+}
+
+.rememberField {
+	margin-bottom: 30px;
+	height: 20px;
+	line-height: 20px;
+	float: left;
+	display: block;
+}
+
+.checkboxPic {
+	outline: none;
+	display: inline-block;
+	width: 25px;
+	height: 20px;
+	line-height: 20px;
+	cursor: pointer;
+	vertical-align: middle;
+	overflow: hidden;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.otherError {
+	display: none;
+	margin-left: 0px;
+	margin-bottom: 20px;
+	color: red;
+	float: left;
+}
+
+.fullBtnBlue {
+	display: inline-block;
+	height: 50px;
+	width: 302px;
+	font-size: 20px;
+	line-height: 50px;
+	text-align: center;
+	margin-bottom: 20px;
+	outline: none;
+	cursor: pointer;
+	background-color: #32a5e7;
+	color: #fff;
+	margin-top: 20px;
+}
+.reme-tex{
+	font-size: 0.213rem;
+	color: #FFFFFF;
+}
+.remeber-pwd{
+    background-image: url("../img/rememberpwd@1.5x.png");
+    background-repeat: no-repeat;
+    background-size: 0.23rem 0.23rem;
+    display: inline-block;
+    height: 0.36rem;
+    width: 0.4rem;
+    float: left;
+    margin-top: 0.27rem;
+}
+.remember{
+	background-image: url("../img/remember_pwd_remember@1.5x.png");
+}
+.reme-div{
+    margin-top: 0;
+    margin-bottom: -0.2rem;
+}
+.acc-div{
+    position: fixed;
+    background-color: #ffffff;
+    border-bottom: 1px solid #FFFFFF;
+    border-top: 1px solid #E7E7E7;
+    display: block;
+    line-height: 40px;
+    padding: 0;
+    margin-top: 50px;
+    color: #737373;
+    text-align: left;
+    padding: 0 10px;
+    width: 130px;
+    border: 1px solid #FFFFFF;
+    border-radius: 1px;
+}
+.acc-l{
+    border-top: 1px solid #d2d2d2;
+}

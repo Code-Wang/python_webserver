@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		<link rel="stylesheet" href="{{static_url("css/font-awesome-4.7.0/css/font-awesome.css")}}"  />
+		<link rel="stylesheet" href="{{static_url("css/login.css")}}" />
+		<script type="text/javascript" src="{{static_url("js/jquery.min.js")}}"  ></script>
+		<title>Login</title>
+	</head>
+	<body>
+		<div class="login-page">
+			<div class="logo-img">
+				<img src="{{static_url("img/logo.jpg")}}" />
+			</div>
+			<div class="logo-desc">
+				<div>考试系统</div>
+			</div>
+			<form class="mainForm">
+				<div class="normalInput">
+					<i class="fa fa-user"></i>
+					<input type="text" name="userName" class="normalInput_input" autocomplete="off" placeholder="用户名" oninput="$(this).parent().next().hide();">
+				</div>
+				<span class="error">用户不存在!</span>
+				<div class="normalInput">
+					<i class="fa fa-lock"></i>
+					<input type="password" name="password" class="normalInput_input" maxlength="16" autocomplete="off" placeholder="密码" oninput="$(this).parent().next().hide();">
+				</div>
+				<span class="error">密码错误!</span>
+				<div class="normalInput reme-div">
+					<span class="remeber-pwd remember"></span><span class="reme-tex">记住密码</span>
+				</div>
+				<button id="form_submit" type="" class="btn btn-login">Login</button>
+			</form>
+		</div>
+		<script>
+			$(function(){
+				var isremember = $(".remeber-pwd").hasClass("remember")? "1":"0";
+				if (isremember=="1"){
+					var un = getCookie("user_name");
+					var pw = getCookie("pwd");
+					$("input[name='userName']").val(un);
+					$("input[name='password']").val(pw);
+				}
+			});
+			
+			//获取cookie
+			function getCookie(cname) {
+			    var name = cname + "=";
+			    console.log(document.cookie);
+			    var ca = document.cookie.split(';');
+			    for(var i=0; i<ca.length; i++) {
+			        var c = ca[i];
+			        while (c.charAt(0)==' ') c = c.substring(1);
+			        if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+			    }
+			    return "";
+			}
+			
+			$("span.remeber-pwd").on("click",function(){
+				$(this).toggleClass("remember");
+			});
+			
+			$("#form_submit").click(function(){
+				var userName = $("input[name='userName']").val().trim();
+				var password = $("input[name='password']").val().trim();
+				var isremember = $(".remeber-pwd").hasClass("remember")? "1":"0";
+				if(userName.length < 1) {
+					$("input[name='userName']").parent().next().html("Please input your username.");
+					$("input[name='userName']").parent().next().show();
+					return false;
+				}
+				if(password.length < 1) {
+					$("input[name='password']").parent().next().html("Please input your password");
+					$("input[name='password']").parent().next().show();
+					return false;
+				}
+				$.ajax({
+					type:"post",
+					url:"/login.html",
+					dataType:"json",
+					data:{"userName":userName,"password":password,"isremember":isremember},
+					success:function(data){
+						if(data.code==1){
+							$("input[name='userName']").parent().next().html("用户不存在!");
+							$("input[name='userName']").parent().next().show();
+						}else if(data.code==-1){
+							$("input[name='password']").parent().next().html("密码错误!");
+							$("input[name='password']").parent().next().show();
+						}else{
+							window.location.href = "/";
+						}
+					},
+					error:function(){
+						alert("系统错误");
+					}
+				});
+				return false;
+			});
+		</script>
+	</body>
+</html>

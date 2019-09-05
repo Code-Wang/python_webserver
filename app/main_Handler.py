@@ -4,20 +4,16 @@ import comm.mysql
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render('../source/html/index.html',)
+        self.render("../source/html/login.html",)
+        """
         conn = comm.mysql.OperateDataBase()
-        conn.conDB()
+        id = 0
+        name = "test"
+        password = "123456"
+        sql = "insert into user_info (id,name,password)" \
+                " VALUES (\'%d\', \'%s\',\'%s\')" % (id, name, password)
+        conn.execute(sql)
+        """
 
     def post(self):
-        import time
-        title = self.get_argument("title", None)
-        content = self.get_argument("content", None)
-        blog = dict()
-        if title and content:
-            blog["title"] = title
-            blog["content"] = content
-            blog["date"] = int(time.time())
-            #coll = self.application.db.blog
-            #coll.insert(blog)
-            self.redirect("/blog")
-        self.redirect("/")
+        pass
