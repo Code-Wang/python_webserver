@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="{{static_url("css/font-awesome-4.7.0/css/font-awesome.css")}}"  />
 		<link rel="stylesheet" href="{{static_url("css/login.css")}}" />
 		<script type="text/javascript" src="{{static_url("js/jquery.min.js")}}"  ></script>
-		<title>Login</title>
+		<title>登录</title>
 	</head>
 	<body>
 		<div class="login-page">
@@ -77,7 +77,7 @@
 				}
 				$.ajax({
 					type:"post",
-					url:"/login.html",
+					url:"/",
 					dataType:"json",
 					data:{"userName":userName,"password":password,"isremember":isremember},
 					success:function(data){
@@ -92,6 +92,8 @@
 						}
 					},
 					error:function(){
+						console.log('username is :' + userName)
+						console.log('password is :' + password)
 						alert("系统错误");
 					}
 				});

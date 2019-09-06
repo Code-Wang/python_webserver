@@ -1,8 +1,8 @@
 from app.test_Handler import TestHandler 
-from app.main_Handler import MainHandler 
+from app.login_Handler import LoginHandler 
 
 
 routers = [
-    (r'/', MainHandler),
+    (r'/login', LoginHandler),
     (r'/test', TestHandler),
     ]
