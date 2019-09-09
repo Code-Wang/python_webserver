@@ -45,9 +45,9 @@ class LoginHandler(tornado.web.RequestHandler):
             return True
         
         if int(result['failTimes'][0]) >= 5:
-            return True
-
-        if (int(result['lastFailedTime'][0])+ 900) < time.time():
+            if (int(result['lastFailedTime'][0])+ 900) < time.time():
+                self.resetFailTimes(userName, conn)
+                return False
             return True
 
         return False
