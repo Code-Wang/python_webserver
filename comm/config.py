@@ -4,7 +4,7 @@ import configparser
 
 def getConfig(hkey,key):
     cf = configparser.ConfigParser()
-    cf.read("/Users/wangyaobo/Documents/python/tornado_webserver/config/database.conf")
+    cf.read("D:\FUDIAN\Documents\GitHub\python_webserver\config\database.conf")
     if key=="port":
         result = cf.getint(hkey, key)
     else:

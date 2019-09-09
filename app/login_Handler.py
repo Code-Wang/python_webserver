@@ -21,11 +21,15 @@ class LoginHandler(tornado.web.RequestHandler):
         passWord = self.get_argument("password")
         code = {}
         conn = comm.mysql.OperateDataBase()
-        sql = "select password from user_info where username = 'userName'"
+        sql = "select Password from user_info where UserName = '" + userName + "'"
         result = conn.query(sql)
-        if resut == passWord:
-            code['code'] = 1
-        else :
+        if len(result) == 0:
             code['code'] = -1
+        else:
+            result = result['Password'][0]
+            if result == passWord:
+                code['code'] = 1
+            else :
+                code['code'] = -2
         self.write(json_encode(code))
 

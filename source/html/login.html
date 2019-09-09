@@ -77,18 +77,18 @@
 				}
 				$.ajax({
 					type:"post",
-					url:"/",
+					url:"/login",
 					dataType:"json",
 					data:{"userName":userName,"password":password,"isremember":isremember},
 					success:function(data){
-						if(data.code==1){
+						if(data.code == -1){
 							$("input[name='userName']").parent().next().html("用户不存在!");
 							$("input[name='userName']").parent().next().show();
-						}else if(data.code==-1){
+						}else if(data.code == -2){
 							$("input[name='password']").parent().next().html("密码错误!");
 							$("input[name='password']").parent().next().show();
 						}else{
-							window.location.href = "/";
+							window.location.href = "/test";
 						}
 					},
 					error:function(){
