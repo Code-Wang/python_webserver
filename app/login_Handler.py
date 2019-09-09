@@ -2,6 +2,7 @@
 import tornado.web
 from tornado.escape import json_encode
 import comm.mysql
+import time
 
 class LoginHandler(tornado.web.RequestHandler):
     def get(self):
@@ -25,11 +26,47 @@ class LoginHandler(tornado.web.RequestHandler):
         result = conn.query(sql)
         if len(result) == 0:
             code['code'] = -1
+        elif self.checkLoginTime(userName, conn):
+            code['code'] = -3
         else:
             result = result['Password'][0]
             if result == passWord:
+                self.resetFailTimes(userName, conn)
                 code['code'] = 1
             else :
+                self.increaseFailTimes(userName, conn)
                 code['code'] = -2
         self.write(json_encode(code))
+
+    def checkLoginTime(self, userName, conn):
+        sql = "select * from login_failed where UserName = '" + userName + "'"
+        result = conn.query(sql)
+        if len(result) == 0:
+            return True
+        
+        if int(result['failTimes'][0]) >= 5:
+            return True
+
+        if (int(result['lastFailedTime'][0])+ 900) < time.time():
+            return True
+
+        return False
+
+    def increaseFailTimes(self, userName, conn):
+        sql = "select * from login_failed where UserName = '" + userName + "'"
+        result = conn.query(sql)
+        if len(result) == 0 :
+            insertSql = "insert into login_failed (userName, failTimes, lastFailedTime)" \
+                " VALUES (\'%s\', '1',\'%d\')" % (userName, int(time.time()))
+            conn.execute(insertSql)  
+        else:
+            FailTimes = int(result['failTimes'][0]) + 1
+            updateSql = "update login_failed set failTimes = \'%d\' , lastFailedTime = \'%d\'where UserName = \'%s\'" % (FailTimes,int(time.time()),userName)
+            conn.execute(updateSql)
+        return
+
+    def resetFailTimes(self, userName, conn):
+        sql = "update login_failed set failTimes = 0 where UserName = '" + userName + "'"
+        conn.execute(sql)
+        return
 
