@@ -9,7 +9,7 @@ import tornado.options
 from tornado.options import define, options
 from router import routers
 
-define('port', default=8002, help='run on the given port', type=int)
+define('port', default=5555, help='run on the given port', type=int)
 
 
 class Application(tornado.web.Application):

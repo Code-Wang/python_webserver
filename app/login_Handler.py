@@ -42,7 +42,7 @@ class LoginHandler(tornado.web.RequestHandler):
         sql = "select * from login_failed where UserName = '" + userName + "'"
         result = conn.query(sql)
         if len(result) == 0:
-            return True
+            return False
         
         if int(result['failTimes'][0]) >= 5:
             if (int(result['lastFailedTime'][0])+ 900) < time.time():
