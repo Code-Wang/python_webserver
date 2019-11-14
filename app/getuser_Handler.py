@@ -8,7 +8,7 @@ class GetUserHandler(BaseHandler):
         pageIndex = self.get_argument("index")
         pageCount = self.get_argument("count")
         conn = comm.mysql.OperateDataBase()
-        sql = "select * from user_info order by id limit " + pageIndex + "," pageCount
+        sql = "select * from user_info order by id limit " + pageIndex + "," + pageCount
         result = conn.query(sql)
         self.write(json_encode(result))
 
