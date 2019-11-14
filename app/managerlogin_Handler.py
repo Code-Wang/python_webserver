@@ -5,7 +5,7 @@ import comm.mysql
 import time
 from app.base_Handler import BaseHandler
 
-class LoginHandler(BaseHandler):
+class ManagerLoginHandler(BaseHandler):
     def get(self):
         self.render("../source/html/login.html",)
         """
