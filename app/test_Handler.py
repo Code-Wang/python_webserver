@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import tornado.web
 import comm.mysql
+from app.base_Handler import BaseHandler
 
-class TestHandler(tornado.web.RequestHandler):
+class TestHandler(BaseHandler):
     def get(self):
         self.render('../source/html/test.html',)
         """

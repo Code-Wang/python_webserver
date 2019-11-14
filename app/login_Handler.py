@@ -3,8 +3,9 @@ import tornado.web
 from tornado.escape import json_encode
 import comm.mysql
 import time
+from app.base_Handler import BaseHandler
 
-class LoginHandler(tornado.web.RequestHandler):
+class LoginHandler(BaseHandler):
     def get(self):
         self.render("../source/html/login.html",)
         """
