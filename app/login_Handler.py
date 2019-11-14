@@ -19,7 +19,7 @@ class LoginHandler(BaseHandler):
         """
 
     def post(self):
-        userName = self.get_argument("userName")
+        userName = self.get_argument("username")
         passWord = self.get_argument("password")
         code = {}
         conn = comm.mysql.OperateDataBase()
