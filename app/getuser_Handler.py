@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import tornado.web
+from tornado.escape import json_encode
 import comm.mysql
 from app.base_Handler import BaseHandler
 
