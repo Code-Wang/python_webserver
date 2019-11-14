@@ -11,7 +11,12 @@ class GetUserHandler(BaseHandler):
         conn = comm.mysql.OperateDataBase()
         sql = "select * from user_info order by id limit " + pageIndex + "," + pageCount
         result = conn.query(sql)
-        print(result)
-        #self.write(json_encode(result))
-
+        userlist = []
+        length = len(result['Id'])
+        for i in range(0, length):
+            dict = {}
+            dict['username'] = result['UserName'][i]
+            dict['password'] = result['Password'][i]
+            userlist.append(dict)
+        self.write(json_encode(userlist))
 
