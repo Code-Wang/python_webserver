@@ -74,6 +74,6 @@ class ManagerLoginHandler(BaseHandler):
 
     def insertLoginRecord(self, UserName, Ip,  conn):
         sql = "insert into login_record (UserName, Ip, LoginTime)" \
-            "VALUES (\'%s\', \'%s\', \'%s\')" % (userName, Ip, time.strftime('%Y-%m-%d %H:%M:%S'))
+            "VALUES (\'%s\', \'%s\', \'%s\')" % (UserName, Ip, time.strftime('%Y-%m-%d %H:%M:%S'))
         conn.execute(sql)    
         return
