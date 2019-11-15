@@ -34,6 +34,7 @@ class ManagerLoginHandler(BaseHandler):
             if result == passWord:
                 self.resetFailTimes(userName, conn)
                 code['code'] = 1
+                print(self.request.remote_ip)
             else :
                 self.increaseFailTimes(userName, conn)
                 code['code'] = -2
@@ -71,3 +72,8 @@ class ManagerLoginHandler(BaseHandler):
         conn.execute(sql)
         return
 
+    def insertLoginRecord(self, UserName, conn)
+        sql = "insert into login_record (UserName, Ip, LoginTime)" \
+            "VALUES (\'%s\', \'%s\')" % (userName, time.strftime('%Y-%m-%d %H:%M:%S'))
+        conn.execute(sql)    
+        return
