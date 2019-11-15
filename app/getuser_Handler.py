@@ -16,6 +16,7 @@ class GetUserHandler(BaseHandler):
         for i in range(0, length):
             dict = {}
             dict['username'] = result['UserName'][i]
+            dict['truename'] = result['TrueName'][i]
             dict['password'] = result['Password'][i]
             userlist.append(dict)
         self.write(json_encode(userlist))
