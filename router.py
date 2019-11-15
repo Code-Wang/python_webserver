@@ -4,6 +4,6 @@ from app.getuser_Handler import GetUserHandler
 
 routers = [
     (r'/managerlogin', ManagerLoginHandler),
-    (r'/account', AccountHandler),
+    (r'/getaccountindo', AccountHandler),
     (r'/getuserinfo', GetUserHandler),
     ]
