@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import tornado.web
 import comm.mysql
+from tornado.escape import json_encode
 from app.base_Handler import BaseHandler
 
 class AccountHandler(BaseHandler):
@@ -20,7 +21,7 @@ class AccountHandler(BaseHandler):
             dict['accountname'] = result['Accountname'][i]
             dict['telphone'] = result['Telphone'][i]
             dict['address'] = result['Address'][i]
-            dict['paytype'] = result['PayYype'][i]
+            dict['paytype'] = result['PayType'][i]
             dict['payaccount'] = result['PayAccount'][i]
             dict['defaultsize'] = result['DefaultSize'][i]
             dict['state'] = result['State'][i]
