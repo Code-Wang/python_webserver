@@ -23,8 +23,8 @@ class AccountHandler(BaseHandler):
             dict['address'] = result['Address'][i]
             dict['paytype'] = result['PayType'][i]
             dict['payaccount'] = result['PayAccount'][i]
-            dict['defaultsize'] = result['DefaultSize'][i]
-            dict['state'] = result['State'][i]
+            dict['defaultsize'] = str(result['DefaultSize'][i])
+            dict['state'] = str(result['State'][i])
             userlist.append(dict)
         self.write(json_encode(userlist))
 
