@@ -1,9 +1,9 @@
-from app.test_Handler import TestHandler 
+from app.account_Handler import AccountHandler 
 from app.managerlogin_Handler import ManagerLoginHandler 
 from app.getuser_Handler import GetUserHandler 
 
 routers = [
     (r'/managerlogin', ManagerLoginHandler),
-    (r'/test', TestHandler),
+    (r'/account', AccountHandler),
     (r'/getuserinfo', GetUserHandler),
     ]
