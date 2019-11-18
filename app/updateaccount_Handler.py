@@ -18,12 +18,12 @@ class UpdateAccountHandler(BaseHandler):
         DefaultSize = float(self.get_argument("defaultsize"))
 
         conn = comm.mysql.OperateDataBase()
-        sql = "update table account_info " \
+        sql = "update account_info " \
                 "SET Webset=\'%s\' , Account=\'%s\' , Password=\'%s\' , Accountname=\'%s\' , Telphone=\'%s\' , Address=\'%s\' , PayType=\'%s\' , " \
-                    "PayAccount=\'%s\' , DefaultSize = %f " % (Webset, Account, Password, AccountName, Telphone, Address, PayType, PayAccount, DefaultSize)
+                    "PayAccount=\'%s\' , DefaultSize=%f " % (Webset, Account, Password, AccountName, Telphone, Address, PayType, PayAccount, DefaultSize)
 
         if Id != 0:
-            condition = "where Id = %d" % (Id)
+            condition = "where Id=%d" % (Id)
             sql += condition
 
         print(sql)
