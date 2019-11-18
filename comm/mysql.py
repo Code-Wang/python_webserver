@@ -12,7 +12,8 @@ class OperateDataBase ():
         conn = pymysql.connect(host=getConfig('db','host'), user=getConfig('db','username'),password=getConfig('db','password'),database=getConfig('db','dbname'),charset="utf8")
         # 得到一个可以执行SQL语句的光标对象
         cursor = conn.cursor()
-        result = cursor.execute(sql)
+        cursor.execute(sql)
+        result = cursor.fetchall() 
         conn.commit()
         cursor.close()
         conn.close()
