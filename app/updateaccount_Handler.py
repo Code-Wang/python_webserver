@@ -29,7 +29,7 @@ class UpdateAccountHandler(BaseHandler):
 
         conn = comm.mysql.OperateDataBase()
         result = conn.execute(sql)
-
+        print(sql)
         if not result:
             rspStr = json_encode({'code': 0, 'desc': "update success"})
         else:
