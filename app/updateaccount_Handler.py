@@ -16,19 +16,20 @@ class UpdateAccountHandler(BaseHandler):
         PayType = self.get_argument("paytype")
         PayAccount = self.get_argument("payaccount")
         DefaultSize = float(self.get_argument("defaultsize"))
-
-        conn = comm.mysql.OperateDataBase()
-        sql = "update account_info " \
-                "SET Webset=\'%s\' , Account=\'%s\' , Password=\'%s\' , Accountname=\'%s\' , Telphone=\'%s\' , Address=\'%s\' , PayType=\'%s\' , " \
-                    "PayAccount=\'%s\' , DefaultSize=%f " % (Webset, Account, Password, AccountName, Telphone, Address, PayType, PayAccount, DefaultSize)
+        sql = ""
 
         if Id != 0:
-            condition = "where Id=%d" % (Id)
-            sql += condition
+            sql = "update account_info " \
+                "SET Webset=\'%s\' , Account=\'%s\' , Password=\'%s\' , Accountname=\'%s\' , Telphone=\'%s\' , Address=\'%s\' , PayType=\'%s\' , " \
+                    "PayAccount=\'%s\' , DefaultSize=%f where Id=%d" % (Webset, Account, Password, AccountName, Telphone, Address, PayType, PayAccount, DefaultSize, Id)
+        else:
+            sql = "insert into account_info " \
+                "(Webset, Account, Password  Accountname, Telphone, Address, PayType, PayAccount, DefaultSize)" \
+                    "VALUES (\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,%f)" % (Webset, Account, Password, AccountName, Telphone, Address, PayType, PayAccount, DefaultSize)
 
-        print(sql)
+        conn = comm.mysql.OperateDataBase()
         result = conn.execute(sql)
-        print(result)
+
         if not result:
             rspStr = json_encode({'code': 0, 'desc': "update success"})
         else:
