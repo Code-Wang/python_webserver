@@ -32,4 +32,3 @@ class OperateDataBase ():
         result = pandas.read_sql(sql,conn)
         conn.close()
         return result
-
