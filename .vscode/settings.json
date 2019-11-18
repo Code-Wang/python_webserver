@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/usr/bin/Python"
+    "python.pythonPath": "/usr/bin/Python",
+    "python.linting.enabled": false
 }

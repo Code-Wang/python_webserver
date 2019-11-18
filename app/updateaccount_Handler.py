@@ -6,7 +6,7 @@ from app.base_Handler import BaseHandler
 
 class UpdateAccountHandler(BaseHandler):
     def post(self):
-        Id = self.get_argument("id")
+        Id = int(self.get_argument("id"))
         Webset = self.get_argument("webset")
         Account = self.get_argument("account")
         Password = self.get_argument("password")
@@ -15,7 +15,7 @@ class UpdateAccountHandler(BaseHandler):
         Address = self.get_argument("address")
         PayType = self.get_argument("paytype")
         PayAccount = self.get_argument("payaccount")
-        DefaultSize = self.get_argument("defaultsize")
+        DefaultSize = float(self.get_argument("defaultsize"))
 
         conn = comm.mysql.OperateDataBase()
         sql = "update table account_info " \
