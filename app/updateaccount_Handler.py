@@ -28,9 +28,10 @@ class UpdateAccountHandler(BaseHandler):
 
         print(sql)
         result = conn.execute(sql)
+        print(result)
         if not result:
-            rspStr = json.dumps({'code': 1, 'desc': "database exception"})
+            rspStr = json_encode({'code': 1, 'desc': "database exception"})
         else:
-            rspStr = json.dumps({'code': 0, 'desc': "update success"})
+            rspStr = json_encode({'code': 0, 'desc': "update success"})
         self.write(rspStr)
 
