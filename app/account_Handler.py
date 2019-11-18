@@ -15,6 +15,7 @@ class AccountHandler(BaseHandler):
         length = len(result['Id'])
         for i in range(0, length):
             dict = {}
+            dict['id'] = result['Id'][i]
             dict['webset'] = result['Webset'][i]
             dict['account'] = result['Account'][i]
             dict['password'] = result['Password'][i]

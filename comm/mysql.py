@@ -12,10 +12,11 @@ class OperateDataBase ():
         conn = pymysql.connect(host=getConfig('db','host'), user=getConfig('db','username'),password=getConfig('db','password'),database=getConfig('db','dbname'),charset="utf8")
         # 得到一个可以执行SQL语句的光标对象
         cursor = conn.cursor()
-        cursor.execute(sql)
+        result = cursor.execute(sql)
         conn.commit()
         cursor.close()
         conn.close()
+        return result
 
     def query(self, sql):
         # 连接database
@@ -27,7 +28,7 @@ class OperateDataBase ():
         data = cursor.fetchall()
         cursor.close()
         """
-        data=pandas.read_sql(sql,conn)
+        result = pandas.read_sql(sql,conn)
         conn.close()
-        return data
+        return result
 
