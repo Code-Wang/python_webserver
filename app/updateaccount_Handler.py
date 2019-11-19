@@ -24,8 +24,8 @@ class UpdateAccountHandler(BaseHandler):
                     "PayAccount=\'%s\' , DefaultSize=%f where Id=%d" % (Webset, Account, Password, AccountName, Telphone, Address, PayType, PayAccount, DefaultSize, Id)
         else:
             sql = "insert into account_info " \
-                "(Webset, Account, Password  Accountname, Telphone, Address, PayType, PayAccount, DefaultSize)" \
-                    "VALUES (\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,%f)" % (Webset, Account, Password, AccountName, Telphone, Address, PayType, PayAccount, DefaultSize)
+                "(Id, Webset, Account, Password  Accountname, Telphone, Address, PayType, PayAccount, DefaultSize) " \
+                    "VALUES (0, \'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\' ,%f)" % (Webset, Account, Password, AccountName, Telphone, Address, PayType, PayAccount, DefaultSize)
 
         conn = comm.mysql.OperateDataBase()
         result = conn.execute(sql)
