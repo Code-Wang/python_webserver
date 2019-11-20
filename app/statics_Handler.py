@@ -9,12 +9,12 @@ class StaticsHandler(BaseHandler):
         conn = comm.mysql.OperateDataBase()
         sql = "SELECT Webset,COUNT(*) as Count FROM account_info GROUP BY Webset ORDER BY COUNT(*) desc"
         result = conn.query(sql)
-        userlist = []
+        datalist = []
         length = len(result['Webset'])
         for i in range(0, length):
             dict = {}
             dict['name'] = result['Webset'][i]
             dict['value'] = str(result['Count'][i])
-            userlist.append(dict)
-        self.write(json_encode(userlist))
+            datalist.append(dict)
+        self.write(json_encode(datalist))
 

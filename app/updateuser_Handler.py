@@ -19,7 +19,6 @@ class UpdateUserHandler(BaseHandler):
             sql = "insert into user_info (Id, UserName, TrueName, Password) " \
                     "VALUES (0, \'%s\' ,\'%s\' ,\'%s\')" % (UserName, TrueName, Password)
 
-        print(sql)
         conn = comm.mysql.OperateDataBase()
         result = conn.execute(sql)
         if not result:

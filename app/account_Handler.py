@@ -11,7 +11,7 @@ class AccountHandler(BaseHandler):
         conn = comm.mysql.OperateDataBase()
         sql = "select * from account_info order by id limit " + pageIndex + "," + pageCount
         result = conn.query(sql)
-        userlist = []
+        accountlist = []
         length = len(result['Id'])
         for i in range(0, length):
             dict = {}
@@ -26,6 +26,6 @@ class AccountHandler(BaseHandler):
             dict['payaccount'] = result['PayAccount'][i]
             dict['defaultsize'] = str(result['DefaultSize'][i])
             dict['state'] = str(result['State'][i])
-            userlist.append(dict)
-        self.write(json_encode(userlist))
+            accountlist.append(dict)
+        self.write(json_encode(accountlist))
 
