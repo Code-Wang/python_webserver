@@ -6,7 +6,7 @@ from app.base_Handler import BaseHandler
 
 class DelUserHandler(BaseHandler):
     def post(self):
-        Id = int(self.get_argument("id"))
+        Id = self.get_argument("id")
         conn = comm.mysql.OperateDataBase()
         sql = "DELETE FROM user_info WHERE Id = " + Id
 
