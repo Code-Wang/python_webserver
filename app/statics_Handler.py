@@ -6,8 +6,6 @@ from app.base_Handler import BaseHandler
 
 class StaticsHandler(BaseHandler):
     def post(self):
-        pageIndex = self.get_argument("index")
-        pageCount = self.get_argument("count")
         conn = comm.mysql.OperateDataBase()
         sql = "SELECT Webset,COUNT(*) as Count FROM account_info GROUP BY Webset ORDER BY COUNT(*) desc"
         result = conn.query(sql)
@@ -15,8 +13,8 @@ class StaticsHandler(BaseHandler):
         length = len(result['Webset'])
         for i in range(0, length):
             dict = {}
-            dict['webset'] = result['Webset'][i]
-            dict['count'] = result['Count'][i]
+            dict['name'] = result['Webset'][i]
+            dict['value'] = result['Count'][i]
             userlist.append(dict)
         self.write(json_encode(userlist))
 
