@@ -9,8 +9,7 @@ class AccountHandler(BaseHandler):
         conn = comm.mysql.OperateDataBase()
         sql = "select count(*) as count from account_info"
         result = conn.query(sql)
-        dict = {}
-        dict['Count'] = result['count']
+        data = {'Count' : result['count']}
         self.write(json_encode(dict))
 
     def post(self):
