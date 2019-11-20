@@ -14,10 +14,12 @@ class AccountHandler(BaseHandler):
         self.write(json_encode(dict))
 
     def post(self):
-        pageIndex = self.get_argument("index")
-        pageCount = self.get_argument("count")
+        pageIndex = int(self.get_argument("index"))
+        pageCount = int(self.get_argument("count"))
+        beginIndex = str(pageIndex * pageCount)
+        endIndex = str((pageIndex + 1)  * pageCount)
         conn = comm.mysql.OperateDataBase()
-        sql = "select * from account_info order by id limit " + pageIndex*pageCount + "," + (pageIndex + 1)*pageCount
+        sql = "select * from account_info order by id limit " + beginIndex + "," + endIndex
         result = conn.query(sql)
         accountlist = []
         length = len(result['Id'])
