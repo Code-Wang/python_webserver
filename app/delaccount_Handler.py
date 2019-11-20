@@ -6,13 +6,13 @@ from app.base_Handler import BaseHandler
 
 class DelAccountHandler(BaseHandler):
     def post(self):
-        Id = int(self.get_argument("id"))
+        Id = str(self.get_argument("id"))
         conn = comm.mysql.OperateDataBase()
         sql = "DELETE FROM account_info WHERE Id = " + Id
 
         conn = comm.mysql.OperateDataBase()
         result = conn.execute(sql)
-        
+
         if not result:
             rspStr = json_encode({'code': 0, 'desc': "delete success"})
         else:
