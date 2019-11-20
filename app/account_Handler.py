@@ -9,8 +9,9 @@ class AccountHandler(BaseHandler):
         conn = comm.mysql.OperateDataBase()
         sql = "select count(*) as count from account_info"
         result = conn.query(sql)
-        data = [{'Count' : result['count']}]
-        self.write(json_encode(dict))
+        data = [{'Count' : str(result['count'][0])}]
+        print(data)
+        self.write(json_encode(data))
 
     def post(self):
         pageIndex = int(self.get_argument("index"))
@@ -36,5 +37,6 @@ class AccountHandler(BaseHandler):
             dict['defaultsize'] = str(result['DefaultSize'][i])
             dict['state'] = str(result['State'][i])
             accountlist.append(dict)
+        print(accountlist)
         self.write(json_encode(accountlist))
 
