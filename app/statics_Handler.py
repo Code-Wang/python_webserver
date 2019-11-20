@@ -14,7 +14,7 @@ class StaticsHandler(BaseHandler):
         for i in range(0, length):
             dict = {}
             dict['name'] = result['Webset'][i]
-            dict['value'] = result['Count'][i]
+            dict['value'] = str(result['Count'][i])
             userlist.append(dict)
         self.write(json_encode(userlist))
 
