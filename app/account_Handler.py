@@ -5,11 +5,19 @@ from tornado.escape import json_encode
 from app.base_Handler import BaseHandler
 
 class AccountHandler(BaseHandler):
+    def get(self):
+        conn = comm.mysql.OperateDataBase()
+        sql = "select count(*) as count from account_info"
+        result = conn.query(sql)
+        dict = {}
+        dict['Count'] = result['count']
+        self.write(json_encode(dict))
+
     def post(self):
         pageIndex = self.get_argument("index")
         pageCount = self.get_argument("count")
         conn = comm.mysql.OperateDataBase()
-        sql = "select * from account_info order by id limit " + pageIndex + "," + pageCount
+        sql = "select * from account_info order by id limit " + pageIndex*pageCount + "," + (pageIndex + 1)*pageCount
         result = conn.query(sql)
         accountlist = []
         length = len(result['Id'])
