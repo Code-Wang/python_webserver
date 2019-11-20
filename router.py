@@ -5,11 +5,13 @@ from app.updateaccount_Handler import UpdateAccountHandler
 from app.updateuser_Handler import UpdateUserHandler
 from app.statics_Handler import StaticsHandler
 from app.delaccount_Handler import DelAccountHandler
+from app.deluser_Handler import DelUserHandler
 
 routers = [
     (r'/managerlogin', ManagerLoginHandler),
     (r'/getaccountinfo', AccountHandler),
     (r'/getuserinfo', GetUserHandler),
+    (r'/deluser',DelUserHandler),
     (r'/updateuser', UpdateUserHandler),
     (r'/updateaccount', UpdateAccountHandler),
     (r'/delaccount', DelAccountHandler),
