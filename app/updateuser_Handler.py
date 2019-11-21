@@ -14,7 +14,7 @@ class UpdateUserHandler(BaseHandler):
 
         if Id != 0:
             sql = "update user_info " \
-                "SET UserName=\'%s\' , Account=\'%s\' , Password=\'%s\' where Id=%d" % (UserName, TrueName, Password, Id)
+                "SET UserName=\'%s\' , TrueName=\'%s\' , Password=\'%s\' where Id=%d" % (UserName, TrueName, Password, Id)
         else:
             sql = "insert into user_info (Id, UserName, TrueName, Password) " \
                     "VALUES (0, \'%s\' ,\'%s\' ,\'%s\')" % (UserName, TrueName, Password)
