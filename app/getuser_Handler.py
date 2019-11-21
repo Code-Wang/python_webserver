@@ -25,6 +25,7 @@ class GetUserHandler(BaseHandler):
         length = len(result['Id'])
         for i in range(0, length):
             dict = {}
+            dict['id'] = str(result['Id'][i])
             dict['username'] = result['UserName'][i]
             dict['truename'] = result['TrueName'][i]
             dict['password'] = result['Password'][i]
