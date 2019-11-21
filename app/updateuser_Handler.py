@@ -7,7 +7,7 @@ from app.base_Handler import BaseHandler
 class UpdateUserHandler(BaseHandler):
     def post(self):
         Id = int(self.get_argument("id"))
-        UserName = int(self.get_argument("username"))
+        UserName = self.get_argument("username")
         TrueName = self.get_argument("truename")
         Password = self.get_argument("password")
         sql = ""
