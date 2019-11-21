@@ -5,6 +5,14 @@ import comm.mysql
 from app.base_Handler import BaseHandler
 
 class GetUserHandler(BaseHandler):
+    def get(self):
+        conn = comm.mysql.OperateDataBase()
+        sql = "select count(*) as count from user_info"
+        result = conn.query(sql)
+        data = {'Count' : str(result['count'][0])}
+        print(data)
+        self.write(json_encode(data))
+
     def post(self):
         pageIndex = self.get_argument("index")
         pageCount = self.get_argument("count")
