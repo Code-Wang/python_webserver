@@ -13,10 +13,10 @@ class GetStocksHandler(BaseHandler):
         length = len(result['Index'])
         for i in range(0, length):
             dict = {}
-            dict['itemindex'] = result['Index'][i]
+            dict['itemindex'] = str(result['Index'][i])
             dict['itemname'] = result['ItemName'][i]
             dict['itemimage'] = result['ItemImage'][i]
-            dict['itemcount'] = result['ItemCounts'][i]
+            dict['itemcount'] = str(result['ItemCounts'][i])
             itemlist.append(dict)
         self.write(json_encode(itemlist))
 
