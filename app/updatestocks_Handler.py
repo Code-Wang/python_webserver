@@ -11,10 +11,10 @@ class UpdateStocksHandler(BaseHandler):
         ItemId = self.get_argument("itemid")
         ItemName = self.get_argument("itemname")
         ItemCounts = int(self.get_argument("counts"))
-        Price = self.get_argument("price")
-        TotalPrice = self.get_argument("totalprice")
+        Price = float(self.get_argument("price"))
+        TotalPrice = float(self.get_argument("totalprice"))
         CustomerName = self.get_argument("customername")
-        CustomerTelphone = int(self.get_argument("customertelphone"))
+        CustomerTelphone = self.get_argument("customertelphone")
         CustomerAddress = self.get_argument("customeraddress")
         Date = self.get_argument("date") 
 
