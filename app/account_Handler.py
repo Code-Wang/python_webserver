@@ -10,7 +10,6 @@ class AccountHandler(BaseHandler):
         sql = "select count(*) as count from account_info"
         result = conn.query(sql)
         data = {'Count' : str(result['count'][0])}
-        print(data)
         self.write(json_encode(data))
 
     def post(self):
@@ -37,6 +36,5 @@ class AccountHandler(BaseHandler):
             dict['defaultsize'] = str(result['DefaultSize'][i])
             dict['state'] = str(result['State'][i])
             accountlist.append(dict)
-        print(accountlist)
         self.write(json_encode(accountlist))
 

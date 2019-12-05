@@ -6,12 +6,23 @@ from app.base_Handler import BaseHandler
 
 class GetUserHandler(BaseHandler):
     def get(self):
+        Index = self.get_argument("index")
         conn = comm.mysql.OperateDataBase()
-        sql = "select count(*) as count from user_info"
-        result = conn.query(sql)
-        data = {'Count' : str(result['count'][0])}
-        print(data)
-        self.write(json_encode(data))
+        if(Index == "usercounts"):
+            sql = "select count(*) as count from user_info"
+            result = conn.query(sql)
+            data = {'Count' : str(result['count'][0])}
+            self.write(json_encode(data))
+        elif(Index == "userlist"):
+            sql = "select TrueName from user_info"
+            result = conn.query(sql)
+            userlist = []
+            length = len(result['TrueName'])
+            for i in range(0, length):
+                dict = {}
+                dict['username'] = result['TrueName'][i]
+                userlist.append(dict)
+            self.write(json_encode(userlist))
 
     def post(self):
         pageIndex = int(self.get_argument("index"))
