@@ -14,6 +14,7 @@ class GetStocksHandler(BaseHandler):
         for i in range(0, length):
             dict = {}
             dict['itemindex'] = str(result['Index'][i])
+            dict['itemid'] = str(result['ItemId'][i])
             dict['itemname'] = result['ItemName'][i]
             dict['itemimage'] = result['ItemImage'][i]
             dict['itemcount'] = str(result['ItemCounts'][i])
