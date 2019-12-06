@@ -10,7 +10,7 @@ class GetItemListHandler(BaseHandler):
         sql = "select * from stocks_info"
         result = conn.query(sql)
         itemlist = []
-        length = len(result['Index'])
+        length = len(result['Id'])
         for i in range(0, length):
             dict = {}
             dict['itemid'] = str(result['ItemId'][i])

@@ -10,10 +10,10 @@ class GetStocksHandler(BaseHandler):
         sql = "select * from stocks_info"
         result = conn.query(sql)
         itemlist = []
-        length = len(result['Index'])
+        length = len(result['Id'])
         for i in range(0, length):
             dict = {}
-            dict['itemindex'] = str(result['Index'][i])
+            dict['itemindex'] = str(result['Id'][i])
             dict['itemid'] = str(result['ItemId'][i])
             dict['itemname'] = result['ItemName'][i]
             dict['itemimage'] = result['ItemImage'][i]
