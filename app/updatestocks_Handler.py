@@ -52,8 +52,8 @@ class UpdateStocksHandler(BaseHandler):
         CustomerAddress = self.get_argument("customeraddress")
         Date = self.get_argument("date") 
 
-        sql = "insert into sales_data (Index, SalersManName, ItemId, ItemName, ItemCounts, Price, TotalPrice, CustomerName, CustomerTelphone, CustomerAddress, Date)" \
-            "VALUES (0, \'%s\' ,\'%s\' ,\'%s\' ,%d ,%f ,%f ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\')" % (SalersManName, ItemId, ItemName, ItemCounts, Price, TotalPrice, CustomerName, CustomerTelphone, CustomerAddress, Date)
+        sql = "insert into sales_data (SalersManName, ItemId, ItemName, ItemCounts, Price, TotalPrice, CustomerName, CustomerTelphone, CustomerAddress, Date)" \
+            "VALUES (\'%s\' ,\'%s\' ,\'%s\' ,%d ,%f ,%f ,\'%s\' ,\'%s\' ,\'%s\' ,\'%s\')" % (SalersManName, ItemId, ItemName, ItemCounts, Price, TotalPrice, CustomerName, CustomerTelphone, CustomerAddress, Date)
 
         conn = comm.mysql.OperateDataBase()
         result = conn.execute(sql)
@@ -71,8 +71,8 @@ class UpdateStocksHandler(BaseHandler):
         TotalPrice = float(self.get_argument("totalprice"))
         Date = self.get_argument("date") 
 
-        sql = "insert into stocks_data (Index, ItemId, ItemName, ItemCounts, Price, TotalPrice, Date)" \
-            "VALUES (0, \'%s\' ,\'%s\' ,%d ,%f ,%f ,\'%s\')" % (ItemId, ItemName, ItemCounts, Price, TotalPrice, Date)
+        sql = "insert into stocks_data (ItemId, ItemName, ItemCounts, Price, TotalPrice, Date)" \
+            "VALUES (\'%s\' ,\'%s\' ,%d ,%f ,%f ,\'%s\')" % (ItemId, ItemName, ItemCounts, Price, TotalPrice, Date)
 
         conn = comm.mysql.OperateDataBase()
         result = conn.execute(sql)
