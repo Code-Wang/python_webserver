@@ -25,15 +25,15 @@ class GetOrdersHandler(BaseHandler):
         length = len(result['Id'])
         for i in range(0, length):
             dict = {}
-            dict['salersmanname'] = str(result['SalersManName'][i])
-            dict['itemid'] = str(result['ItemId'][i])
+            dict['salersmanname'] = result['SalersManName'][i]
+            dict['itemid'] = result['ItemId'][i]
             dict['itemname'] = result['ItemName'][i]
-            dict['counts'] = result['ItemCounts'][i]
+            dict['counts'] = str(result['ItemCounts'][i])
             dict['price'] = str(result['Price'][i])
             dict['totalprice'] = str(result['TotalPrice'][i])
-            dict['customername'] = str(result['CustomerName'][i])
-            dict['customertelphone'] = str(result['CustomerTelphone'][i])
-            dict['customeraddress'] = str(result['CustomerAddress'][i])
-            dict['date'] = str(result['Date'][i])
+            dict['customername'] = result['CustomerName'][i]
+            dict['customertelphone'] = result['CustomerTelphone'][i]
+            dict['customeraddress'] = result['CustomerAddress'][i]
+            dict['date'] = result['Date'][i])
             orderslist.append(dict)
         self.write(json_encode(orderslist)) 
