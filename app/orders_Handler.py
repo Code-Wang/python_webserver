@@ -34,6 +34,6 @@ class GetOrdersHandler(BaseHandler):
             dict['customername'] = result['CustomerName'][i]
             dict['customertelphone'] = result['CustomerTelphone'][i]
             dict['customeraddress'] = result['CustomerAddress'][i]
-            dict['date'] = result['Date'][i])
+            dict['date'] = result['Date'][i]
             orderslist.append(dict)
         self.write(json_encode(orderslist)) 
