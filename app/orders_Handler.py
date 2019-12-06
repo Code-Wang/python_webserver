@@ -19,7 +19,7 @@ class GetOrdersHandler(BaseHandler):
         beginIndex = str(pageIndex * pageCount)
         endIndex = str((pageIndex + 1)  * pageCount)        
         conn = comm.mysql.OperateDataBase()
-        sql = "select * from sales_data order by id limit " + beginIndex + "," + endIndex     
+        sql = "select * from sales_data order by Index limit " + beginIndex + "," + endIndex     
         result = conn.query(sql)
         orderslist = []
         length = len(result['Index'])
