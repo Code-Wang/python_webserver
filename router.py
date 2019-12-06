@@ -9,6 +9,7 @@ from app.deluser_Handler import DelUserHandler
 from app.stocks_Handler import GetStocksHandler
 from app.itemlist_Handler import GetItemListHandler
 from app.updatestocks_Handler import UpdateStocksHandler
+from app.orders_Handler import GetOrdersHandler
 
 routers = [
     (r'/managerlogin', ManagerLoginHandler),
@@ -22,4 +23,5 @@ routers = [
     (r'/getstocksinfo',GetStocksHandler),
     (r'/getitemlist', GetItemListHandler),
     (r'/updatestocks', UpdateStocksHandler),
+    (r'/getordersinfo', GetOrdersHandler),
     ]
